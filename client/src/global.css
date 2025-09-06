@@ -1,0 +1,190 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* your custom CSS below */
+html {
+    font-family: "Poppins", sans-serif;
+    font-optical-sizing: auto;
+    word-spacing: 0.01cm;
+    outline: none;
+}
+
+.section {
+    width: 100%;
+    height: screen;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container {
+    width: 500px;
+    height: auto;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    margin: 40px 80px;
+    border-radius: 9px;
+    margin-bottom: 60px;
+}
+
+h1 {
+    font-size: 32px;
+    text-align: center;
+    color: #007bff;
+    font-weight: 600;
+    margin-top: 40px;
+}
+
+h2 {
+    font-size: 28px;
+    text-align: center;
+    color: #007bff;
+    font-weight: 600;
+}
+
+h3 {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+p {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.note {
+    text-align: center;
+}
+
+.group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 20px;
+}
+
+input {
+    height: 30px;
+    border-radius: 9px;
+    border: 1px solid #cccc;
+    padding: 5px;
+    font-size: 18px;
+}
+
+input:active {
+    border: 2px solid #007bff;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 8px;
+    font-size: 22px;
+    font-weight: 600;
+    text-transform: capitalize;
+    font-family: "Poppins";
+}
+
+button:hover {
+    background-color: #008cff;
+}
+
+.badge-group {
+    position: relative;
+}
+
+.badge {
+    background-color: #0088ff;
+    font-size: 14px;
+    color: #fff;
+    padding: 5px;
+    border-radius: 50px;
+    font-weight: 700;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+img {
+  height: 75px;
+  width: 75px;
+}
+
+.nav {
+  height: 40px;
+  width: 96vw;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
+  padding: 25px;
+  margin-top: 0;
+  margin-bottom: 25px;
+  /* position: relative;
+  top: 0px; */
+
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.wallet-dropdown {
+  width: 250px;
+}
+
+.wallet-control {
+  background: #fff;
+  border-radius: 6px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.wallet-menu {
+  background: #fff;
+  border-radius: 6px;
+  padding: 8px;
+}
+
+.dropdown-disconnect {
+  background: red;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+@media (max-width: 600px) {
+    .container {
+        width: 400px;
+    }
+}
+
+@media (max-width: 487px) {
+    .container {
+        width: 300px;
+    }
+
+    .badge {
+        background-color: #0088ff;
+        font-size: 10px;
+        color: #fff;
+        padding: 3px;
+        top: 0px;
+        right: 0px;
+        margin-bottom: 20px;
+    }
+    .wallet-dropdown {
+      width: 150px;
+    }
+}
+
+@media (max-width: 387px) {
+    .container {
+        width: 275px;
+    }
+    .nav{
+      justify-content: flex-start;
+    }
+}
