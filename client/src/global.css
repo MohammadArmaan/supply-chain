@@ -65,8 +65,8 @@ p {
 }
 
 .delivered-group {
-  align-items: center;
-  justify-content: center;
+    align-items: center;
+    justify-content: center;
 }
 
 input {
@@ -79,6 +79,15 @@ input {
 
 input:active {
     border: 2px solid #007bff;
+}
+
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #007bff; 
+  border-radius: 9px;
 }
 
 button {
@@ -115,91 +124,90 @@ button:hover {
 }
 
 img {
-  height: 75px;
-  width: 75px;
+    height: 75px;
+    width: 75px;
 }
 
 .details {
-  display: flex;
-  gap:15px;
+    display: flex;
+    gap: 15px;
 }
 
 .nav {
-  height: 40px;
-  width: 96vw;
-  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
-  padding: 25px;
-  margin-top: 0;
-  margin-bottom: 25px;
-  /* position: relative;
+    height: 40px;
+    width: 96vw;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
+    padding: 25px;
+    margin-top: 0;
+    margin-bottom: 25px;
+    /* position: relative;
   top: 0px; */
 
-  display: flex;
-  align-items: center;
-  justify-content: end;
+    display: flex;
+    align-items: center;
+    justify-content: end;
 }
 
 .wallet-control {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  padding: 6px 12px;
-  font-size: 14px;
-  color: #000;
-  cursor: pointer;
-  transition: background 0.2s;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 14px;
+    color: #000;
+    cursor: pointer;
+    transition: background 0.2s;
 }
 
 .wallet-control:hover {
-  background-color: #eee;
+    background-color: #eee;
 }
 
 /* Dropdown menu */
 .wallet-menu {
-  min-width: 220px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  padding: 6px 0;
-  box-shadow: 0px 4px 12px rgba(0,0,0,0.4);
-  z-index: 1000;
-  margin-right: 40px;
+    min-width: 220px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 6px 0;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+    margin-right: 40px;
 }
 
 /* Dropdown items */
 .wallet-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 12px;
-  font-size: 14px;
-  color: #000;
-  cursor: pointer;
-  user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: #000;
+    cursor: pointer;
+    user-select: none;
 }
 
 /* Copy icon */
 .copy-icon {
-  margin-left: 8px;
-  font-size: 16px;
-  color: #000;
+    margin-left: 8px;
+    font-size: 16px;
+    color: #000;
 }
 
 .copy-icon:hover {
-  color: #888;
+    color: #888;
 }
 
 /* Copied message */
 .copied-msg {
-  font-size: 12px;
-  color: lightgreen;
-  margin-left: 12px;
+    font-size: 12px;
+    color: lightgreen;
+    margin-left: 12px;
 }
 
 .wallet-dropdown {
-  width: 250px;
+    width: 250px;
 }
-
 
 @media (max-width: 600px) {
     .container {
@@ -208,6 +216,10 @@ img {
 }
 
 @media (max-width: 487px) {
+    .section {
+        justify-content: center;
+        margin: 20px;
+    }
     .container {
         width: 300px;
     }
@@ -221,16 +233,21 @@ img {
         right: 0px;
         margin-bottom: 20px;
     }
+    .nav {
+        justify-content: flex-start;
+    }
+
     .wallet-dropdown {
-      width: 150px;
+        width: 150px;
+    }
+
+    .wallet-menu {
+        margin-right: 0;
     }
 }
 
 @media (max-width: 387px) {
     .container {
         width: 275px;
-    }
-    .nav{
-      justify-content: flex-start;
     }
 }

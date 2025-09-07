@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddItem from "./components/AddItem";
 import Payment from "./components/Payment";
 import { EthProvider } from "./contexts/EthContext";
@@ -9,11 +9,24 @@ function App() {
     const [itemName, setItemName] = useState("");
     const [cost, setCost] = useState(undefined);
     const [itemIndex, setItemIndex] = useState(undefined);
+    const [isItemAdded, setIsItemAdded] = useState(false);
     const [isPaymentDone, setIsPaymentDone] = useState(false);
+    const [isDelivered, setIsDelivered] = useState(false);
+
+    function handleReset() {
+        if (isDelivered) {
+            setItemName("");
+            setCost(undefined);
+            setItemIndex(undefined);
+            setIsPaymentDone(false);
+            setIsItemAdded(false);
+            setIsDelivered(false);
+        }
+    }
 
     return (
         <EthProvider>
-          <Navbar />
+            <Navbar />
             <section className="section">
                 <h1>Supply Chain</h1>
                 <AddItem
@@ -22,6 +35,10 @@ function App() {
                     cost={cost}
                     setCost={setCost}
                     setItemIndex={setItemIndex}
+                    isItemAdded={isItemAdded}
+                    setIsItemAdded={setIsItemAdded}
+                    isDelivered={isDelivered}
+                    isPaymentDone={isPaymentDone}
                 />
                 <Payment
                     itemName={itemName}
@@ -29,14 +46,18 @@ function App() {
                     itemIndex={itemIndex}
                     isPaymentDone={isPaymentDone}
                     setIsPaymentDone={setIsPaymentDone}
+                    isItemAdded={isItemAdded}
                 />
                 <Delivery
                     itemName={itemName}
                     cost={cost}
                     itemIndex={itemIndex}
                     isPaymentDone={isPaymentDone}
+                    isItemAdded={isItemAdded}
+                    isDelivered={isDelivered}
+                    setIsDelivered={setIsDelivered}
+                    onReset={handleReset}
                 />
-
             </section>
         </EthProvider>
     );

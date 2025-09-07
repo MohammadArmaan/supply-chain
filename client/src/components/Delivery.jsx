@@ -1,11 +1,19 @@
 import { useState } from "react";
 import { useEth } from "../contexts/EthContext";
 
-export default function Delivery({ itemName, cost, itemIndex, isPaymentDone }) {
+export default function Delivery({
+    itemName,
+    cost,
+    itemIndex,
+    isPaymentDone,
+    isItemAdded,
+    isDelivered,
+    setIsDelivered,
+    onReset,
+}) {
     const { state } = useEth();
     const { accounts, contract } = state;
 
-    const [isDelivered, setIsDelivered] = useState(false);
     const [isDeliveryLoading, setIsDeliveryLoading] = useState(false);
     async function handleDelivery() {
         try {
@@ -48,7 +56,7 @@ export default function Delivery({ itemName, cost, itemIndex, isPaymentDone }) {
             </div>
             <h2>Item Delivery</h2>
             <div className="group">
-                {!cost || !itemName ? (
+                {!cost || !itemName || !isItemAdded ? (
                     <p className="note">
                         Please add item to the supply chain and finsih the
                         payment inorder to deliver!
@@ -72,9 +80,16 @@ export default function Delivery({ itemName, cost, itemIndex, isPaymentDone }) {
                         </button>
                     </div>
                 ) : (
-                    <div className="group  delivered-group">
+                    <div className="group delivered-group">
                         <p className="note">Item {itemName} is Delivered</p>
                         <img src="tick.gif" alt="Tick" />
+                        <button
+                            type="button"
+                            onClick={onReset}
+                            className="reset-btn"
+                        >
+                            Add another item
+                        </button>
                     </div>
                 )}
             </div>

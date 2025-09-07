@@ -7,6 +7,7 @@ export default function Payment({
     itemIndex,
     isPaymentDone,
     setIsPaymentDone,
+    isItemAdded
 }) {
     const { state } = useEth();
     const [isPaymentLoading, setIsPaymentLoading] = useState(false);
@@ -60,7 +61,7 @@ export default function Payment({
                 <h3 className="note">Finish payment to start delivery!</h3>
             </div>
             <div className="group">
-                {!cost || !itemName ? (
+                {!cost || !itemName || !isItemAdded ? (
                     <p className="note">
                         Please add item to the supply chain inorder to pay!
                     </p>

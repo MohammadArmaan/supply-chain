@@ -7,6 +7,10 @@ export default function AddItem({
     cost,
     setCost,
     setItemIndex,
+    isItemAdded,
+    setIsItemAdded,
+    isDelivered,
+    isPaymentDone,
 }) {
     const { state } = useEth();
     const { accounts, contract, web3 } = state;
@@ -30,13 +34,17 @@ export default function AddItem({
         console.log("Item created with index:", itemIndex);
 
         setItemIndex(itemIndex);
+        setIsItemAdded(true);
         setIsLoading(false);
     }
     return (
         <div className="container">
-            <h2>Add Item</h2> 
+            <h2>Add Item</h2>
             <div className="group">
-                <p className="note">Add Item to our Blockchain Network with unique name and cost of the item</p>
+                <p className="note">
+                    Add Item to our Blockchain Network with unique name and cost
+                    of the item
+                </p>
             </div>
             <div className="group">
                 <label htmlFor="cost">Cost In ETH:</label>
@@ -49,7 +57,9 @@ export default function AddItem({
                     max={10}
                     step={0.001}
                     onChange={(e) => setCost(e.target.value)}
-                    disabled={isLoading}
+                    disabled={
+                        isLoading || isItemAdded || isPaymentDone || isDelivered
+                    }
                     required
                 />
             </div>
@@ -61,7 +71,9 @@ export default function AddItem({
                     id="item"
                     value={itemName}
                     onChange={(e) => setItemName(e.target.value)}
-                    disabled={isLoading}
+                    disabled={
+                        isLoading || isItemAdded || isPaymentDone || isDelivered
+                    }
                     required
                 />
             </div>
@@ -69,9 +81,19 @@ export default function AddItem({
                 <button
                     type="button"
                     onClick={handleSubmit}
-                    disabled={isLoading}
+                    disabled={
+                        isLoading || isItemAdded || isPaymentDone || isDelivered
+                    }
                 >
-                    {isLoading ? "Creating..." : "Create new Item"}
+                    {isLoading
+                        ? "Creating..."
+                        : !isItemAdded
+                        ? "Create new Item"
+                        : !isPaymentDone
+                        ? "Complete the Payment"
+                        : !isDelivered
+                        ? "Complete the Delivery"
+                        : "Done"}
                 </button>
             </div>
         </div>
