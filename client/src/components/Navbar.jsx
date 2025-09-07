@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { useEth } from "../contexts/EthContext";
-import Dropdown from "react-dropdown";
-import "react-dropdown/style.css";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import { FiCopy } from "react-icons/fi";
 
 export default function Navbar() {
   const { state } = useEth();
-  const { accounts, web3 } = state;
+  const { accounts, web3, contract } = state;
   const [balance, setBalance] = useState(null);
+  const [copied, setCopied] = useState("");
 
   useEffect(() => {
     const fetchBalance = async () => {
@@ -18,30 +19,55 @@ export default function Navbar() {
     fetchBalance();
   }, [accounts, web3]);
 
-  // Dropdown options
-  const options = accounts && accounts.length > 0 ? [
-    {
-      value: "account",
-      label: `Account: ${accounts[0].slice(0, 6)}...${accounts[0].slice(-4)}`,
-    },
-    {
-      value: "balance",
-      label: `Balance: ${balance ? `${balance} ETH` : "Loading..."}`,
-    },
-  ] : [
-    { value: "no-wallet", label: "No wallet connected" },
-  ];
+  const handleCopy = (text, label) => {
+    navigator.clipboard.writeText(text);
+    setCopied(`${label} copied!`);
+    setTimeout(() => setCopied(""), 2000);
+  };
 
   return (
     <nav className="nav">
-      <Dropdown 
-        options={options} 
-        placeholder="Account Details" 
-        className="wallet-dropdown"
-        controlClassName="wallet-control" 
-        menuClassName="wallet-menu" 
-        
-      />
+      <DropdownMenu.Root>
+        <DropdownMenu.Trigger className="wallet-control">
+          Account & Contract Details
+        </DropdownMenu.Trigger>
+
+        <DropdownMenu.Content className="wallet-menu" sideOffset={5}>
+          {accounts && accounts.length > 0 ? (
+            <>
+              <DropdownMenu.Item
+                onClick={() => handleCopy(accounts[0], "Account hash")}
+                className="wallet-item"
+              >
+                Account: {accounts[0].slice(0, 6)}...
+                {accounts[0].slice(-4)} <FiCopy className="copy-icon" />
+              </DropdownMenu.Item>
+
+              <DropdownMenu.Item className="wallet-item">
+                Balance: {balance ? `${balance} ETH` : "Loading..."}
+              </DropdownMenu.Item>
+
+              {contract && contract._address && (
+                <DropdownMenu.Item
+                  onClick={() =>
+                    handleCopy(contract._address, "Contract address")
+                  }
+                  className="wallet-item"
+                >
+                  Contract: {contract._address.slice(0, 6)}...
+                  {contract._address.slice(-4)} <FiCopy className="copy-icon" />
+                </DropdownMenu.Item>
+              )}
+            </>
+          ) : (
+            <DropdownMenu.Item className="wallet-item">
+              No wallet connected
+            </DropdownMenu.Item>
+          )}
+        </DropdownMenu.Content>
+      </DropdownMenu.Root>
+
+      {copied && <p className="copied-msg">{copied}</p>}
     </nav>
   );
 }

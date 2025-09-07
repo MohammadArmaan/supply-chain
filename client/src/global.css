@@ -64,6 +64,11 @@ p {
     margin: 20px;
 }
 
+.delivered-group {
+  align-items: center;
+  justify-content: center;
+}
+
 input {
     height: 30px;
     border-radius: 9px;
@@ -86,6 +91,7 @@ button {
     font-weight: 600;
     text-transform: capitalize;
     font-family: "Poppins";
+    cursor: pointer;
 }
 
 button:hover {
@@ -113,6 +119,11 @@ img {
   width: 75px;
 }
 
+.details {
+  display: flex;
+  gap:15px;
+}
+
 .nav {
   height: 40px;
   width: 96vw;
@@ -128,30 +139,65 @@ img {
   justify-content: end;
 }
 
+.wallet-control {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 14px;
+  color: #000;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.wallet-control:hover {
+  background-color: #eee;
+}
+
+/* Dropdown menu */
+.wallet-menu {
+  min-width: 220px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 6px 0;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.4);
+  z-index: 1000;
+  margin-right: 40px;
+}
+
+/* Dropdown items */
+.wallet-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #000;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Copy icon */
+.copy-icon {
+  margin-left: 8px;
+  font-size: 16px;
+  color: #000;
+}
+
+.copy-icon:hover {
+  color: #888;
+}
+
+/* Copied message */
+.copied-msg {
+  font-size: 12px;
+  color: lightgreen;
+  margin-left: 12px;
+}
+
 .wallet-dropdown {
   width: 250px;
-}
-
-.wallet-control {
-  background: #fff;
-  border-radius: 6px;
-  padding: 8px;
-  cursor: pointer;
-}
-
-.wallet-menu {
-  background: #fff;
-  border-radius: 6px;
-  padding: 8px;
-}
-
-.dropdown-disconnect {
-  background: red;
-  color: white;
-  border: none;
-  padding: 6px 10px;
-  border-radius: 4px;
-  cursor: pointer;
 }
 
 

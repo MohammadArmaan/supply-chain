@@ -72,7 +72,7 @@ export default function Delivery({ itemName, cost, itemIndex, isPaymentDone }) {
                         </button>
                     </div>
                 ) : (
-                    <div className="group">
+                    <div className="group  delivered-group">
                         <p className="note">Item {itemName} is Delivered</p>
                         <img src="tick.gif" alt="Tick" />
                     </div>
