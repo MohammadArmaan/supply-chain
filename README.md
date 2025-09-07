@@ -26,6 +26,8 @@ This DApp allows creating items, making payments on-chain, and tracking their st
 - **Deployment**
   - Uses **Truffle** with **HDWalletProvider**.
   - Deployable to **Sepolia Testnet** via Infura/Alchemy RPC.
+  - The UI part of the Supply Chain DApp is live here: [Supply Chain UI](https://supply-chain-react.vercel.app/)
+
 
 ---
 
